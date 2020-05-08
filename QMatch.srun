@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH --account=ficklin_class
+#SBATCH --partition=ficklin_class
+#SBATCH --job-name=Project_u3
+#SBATCH --output=%a.out
+#SBATCH --mail-user=harrison.fuller@wsu.edu
+#SBATCH --nodes=1-2
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+
+ml nextflow/20.01.0
+ml java/1.8.0
+
+path2split="/data/ficklin_class/AFS505/course_material/data/all.pep"
+
+database="/data/ficklin_class/AFS505/course_material/data/swissprot"
+
+total_instances=$(grep -c ">" $path2split)
+
+split_by=10
+
+nf_operator=$(( total_instances / split_by + 1 ))
+
+nextflow run project.nf -profile slurm --splitr $nf_operator --database $database --query_files $path2split
