@@ -6,7 +6,7 @@ Users must have Blast 2.8.1, Java 1.8.0, and Nextflow 20.01.0 installed on their
 ### Starting
 Copy ```QMatch.nf```, ```QMatch.srun```, and ```nextflow.config``` into a preffered directory on you high permance computing server. 
 ### Personalizing QMatch
-Open ```QMatch.srun``` in a visual editor. Users have the power to change reference databases, FASTA files, and the size of computed chunk sizes using the following variables:
+Open ```QMatch.srun``` in a visual editor. Users have the power to change reference databases, FASTA files, and the size of computed chunks using the following variables:
 ```bash
 path2split=<FASTA_file_for_BLAST_matching>
  
